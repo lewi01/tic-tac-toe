@@ -36,18 +36,16 @@ public class Main {
         }
         boolean xWin = wins('X');
         boolean oWin = wins('O');
-        if(xWin){
-            System.out.println("X wins");
+        if(xWin && oWin || noOfO - noOfX > 1 || noOfX - noOfO > 1){
+            System.out.println("Impossible");
         }else if (oWin){
             System.out.println("O wins");
-        } else if(noOfX + noOfO == 9) {
+        } else if(xWin) {
+            System.out.println("X wins");
+        } else  if(noOfX + noOfO == 9 ){
             System.out.println("Draw");
-        } else  if(noOfO - noOfX > 1 || noOfX - noOfO > 1){
-            System.out.println("Impossible");
-        }else if(str.indexOf(" ") > 0){
+        }else if(str.indexOf("_") > 0){
             System.out.println("Game not finished");
-        }else if (!xWin & !oWin ){
-            System.out.println("Impossible");
         }
 
 
