@@ -22,43 +22,79 @@ public class Main {
             System.out.println("|");
         }
         System.out.println("---------");
-        int noOfX=0;
-        int noOfO=0;
-        for (char[] chars : h) {
-            for (char aChar : chars) {
-                if (String.valueOf(aChar).contains("X")) {
-                    noOfX++;
-                }
-                if (String.valueOf(aChar).contains("O")) {
-                    noOfO++;
-                }
+//        int noOfX=0;
+//        int noOfO=0;
+//        for (char[] chars : h) {
+//            for (char aChar : chars) {
+//                if (String.valueOf(aChar).contains("X")) {
+//                    noOfX++;
+//                }
+//                if (String.valueOf(aChar).contains("O")) {
+//                    noOfO++;
+//                }
+//            }
+//        }
+//        boolean xWin = wins('X');
+//        boolean oWin = wins('O');
+//        if(xWin && oWin || noOfO - noOfX > 1 || noOfX - noOfO > 1){
+//            System.out.println("Impossible");
+//        }else if (oWin){
+//            System.out.println("O wins");
+//        } else if(xWin) {
+//            System.out.println("X wins");
+//        } else  if(noOfX + noOfO == 9 ){
+//            System.out.println("Draw");
+//        }else if(str.indexOf("_") > 0){
+//            System.out.println("Game not finished");
+//        }
+
+        // user should input two coordinates
+        boolean quite = false;
+        while (!quite) {
+            System.out.println("Enter the coordinates:");
+            String coordinates = scanner.next();
+            int input1;
+            int input2;
+            try{
+                String[] split = coordinates.split(" ");
+                input1 = Integer.parseInt(split[0]);
+                input2 = Integer.parseInt(split[1]);
+            }catch (NumberFormatException e){
+                System.out.println("You should enter numbers!");
+                continue;
             }
-        }
-        boolean xWin = wins('X');
-        boolean oWin = wins('O');
-        if(xWin && oWin || noOfO - noOfX > 1 || noOfX - noOfO > 1){
-            System.out.println("Impossible");
-        }else if (oWin){
-            System.out.println("O wins");
-        } else if(xWin) {
-            System.out.println("X wins");
-        } else  if(noOfX + noOfO == 9 ){
-            System.out.println("Draw");
-        }else if(str.indexOf("_") > 0){
-            System.out.println("Game not finished");
-        }
 
+            if (input1 < 1 || input1 > 3 || input2 < 1 || input2 > 3 ){
+                System.out.println("Coordinates should be from 1 to 3!");
+            }else if (h[input1-1][input2-1] == 'X') {
+                    System.out.println("This cell is occupied! Choose another one!");
+            }else {
+                h[input1-1][input2-1] = 'X';
+                System.out.println("---------");
+                for (int i=0;i<3;i++){
+                    System.out.print("| ");
+                    for (int j =0;j<3;j++) {
+                        System.out.print(h[i][j]);
+                        System.out.print(" ");
+                    }
+                    System.out.println("|");
+                }
+                System.out.println("---------");
+                quite = true;
+            }
+
+        }
 
     }
-    public  static boolean wins(char win){
-        return h[0][0] == win && h[0][1] == win && h[0][2] == win ||
-                h[1][0] == win && h[1][1] == win && h[1][2] == win ||
-                h[2][0] == win && h[2][1] == win && h[2][2] == win ||
-                h[0][0] == win && h[1][0] == win && h[2][0] == win ||
-                h[0][1] == win && h[1][1] == win && h[2][1] == win ||
-                h[0][2] == win && h[1][2] == win && h[2][2] == win ||
-                h[0][0] == win && h[1][1] == win && h[2][2] == win ||
-                h[0][2] == win && h[1][1] == win && h[2][0] == win;
-    }
 
+//    public static boolean wins(char win){
+//        return h[0][0] == win && h[0][1] == win && h[0][2] == win ||
+//                h[1][0] == win && h[1][1] == win && h[1][2] == win ||
+//                h[2][0] == win && h[2][1] == win && h[2][2] == win ||
+//                h[0][0] == win && h[1][0] == win && h[2][0] == win ||
+//                h[0][1] == win && h[1][1] == win && h[2][1] == win ||
+//                h[0][2] == win && h[1][2] == win && h[2][2] == win ||
+//                h[0][0] == win && h[1][1] == win && h[2][2] == win ||
+//                h[0][2] == win && h[1][1] == win && h[2][0] == win;
+//    }
 }
