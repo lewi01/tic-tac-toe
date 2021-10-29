@@ -67,7 +67,7 @@ public class Main {
 
             if (input1 < 1 || input1 > 3 || input2 < 1 || input2 > 3 ){
                 System.out.println("Coordinates should be from 1 to 3!");
-            }else if (h[input1-1][input2-1] == 'X') {
+            }else if (h[input1-1][input2-1] == 'X' || h[input1-1][input2-1] == 'O') {
                     System.out.println("This cell is occupied! Choose another one!");
             }else {
                 h[input1-1][input2-1] = 'X';
