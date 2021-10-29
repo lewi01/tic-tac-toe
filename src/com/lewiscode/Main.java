@@ -52,14 +52,15 @@ public class Main {
         boolean quite = false;
         while (!quite) {
             System.out.println("Enter the coordinates:");
-            String coordinates = scanner.next();
+            String coordinates = scanner.nextLine();
+            String s = coordinates.substring(0,1);
+            String d = coordinates.substring(2);
             int input1;
             int input2;
-            try{
-                String[] split = coordinates.split(" ");
-                input1 = Integer.parseInt(split[0]);
-                input2 = Integer.parseInt(split[1]);
-            }catch (NumberFormatException e){
+            try {
+                input1 = Integer.parseInt(s);
+                input2 = Integer.parseInt(d);
+            } catch (NumberFormatException e){
                 System.out.println("You should enter numbers!");
                 continue;
             }
